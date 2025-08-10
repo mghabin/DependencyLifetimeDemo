@@ -1,0 +1,35 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyLifetimeDemo", "DependencyLifetimeDemo", "{34750750-2149-98BD-2F12-0658418E2E7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyLifetimeDemo", "DependencyLifetimeDemo\DependencyLifetimeDemo.csproj", "{C80D0A2D-FFEF-1594-C78F-31E477ED5704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyLifetimeDemo.Tests", "DependencyLifetimeDemo.Tests\DependencyLifetimeDemo.Tests.csproj", "{297EFD3F-52FE-4A6D-A256-62CF21BEBD61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C80D0A2D-FFEF-1594-C78F-31E477ED5704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80D0A2D-FFEF-1594-C78F-31E477ED5704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80D0A2D-FFEF-1594-C78F-31E477ED5704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80D0A2D-FFEF-1594-C78F-31E477ED5704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297EFD3F-52FE-4A6D-A256-62CF21BEBD61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297EFD3F-52FE-4A6D-A256-62CF21BEBD61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297EFD3F-52FE-4A6D-A256-62CF21BEBD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297EFD3F-52FE-4A6D-A256-62CF21BEBD61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C80D0A2D-FFEF-1594-C78F-31E477ED5704} = {34750750-2149-98BD-2F12-0658418E2E7E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEBE1A1C-2549-4439-AF20-2F749EF43569}
+	EndGlobalSection
+EndGlobal

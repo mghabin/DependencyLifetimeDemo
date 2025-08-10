@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DI Lifetime Demo - Interactive Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: #512bd4;
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #512bd4;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        
+        .lifetime-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .transient {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .scoped {
+            background: #4ecdc4;
+            color: white;
+        }
+        
+        .singleton {
+            background: #45b7d1;
+            color: white;
+        }
+        
+        .endpoint {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .endpoint h4 {
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+        
+        .endpoint code {
+            background: #e9ecef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #512bd4;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+        
+        .button:hover {
+            background: #3f22a7;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .emoji {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔧 .NET Dependency Injection Lifetimes</h1>
+            <p class="subtitle">Interactive demonstration of Transient, Scoped, and Singleton behaviors</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="info-box">
+            <strong>📚 What is this?</strong> This demo shows how different DI lifetimes work in ASP.NET Core. 
+            Each service gets a unique ID when created, making it easy to see when instances are created vs. reused.
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h2><span class="emoji">🔄</span> Transient</h2>
+                <span class="lifetime-type transient">New instance every time</span>
+                
+                <h3>Characteristics:</h3>
+                <ul>
+                    <li>Created each time it's requested</li>
+                    <li>Lightweight and stateless</li>
+                    <li>No shared state between instances</li>
+                </ul>
+                
+                <h3>Use Cases:</h3>
+                <ul>
+                    <li>Utility services</li>
+                    <li>Stateless operations</li>
+                    <li>Default choice when unsure</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><span class="emoji">📌</span> Scoped</h2>
+                <span class="lifetime-type scoped">One instance per request</span>
+                
+                <h3>Characteristics:</h3>
+                <ul>
+                    <li>Created once per HTTP request</li>
+                    <li>Shared within the same request</li>
+                    <li>Disposed at end of request</li>
+                </ul>
+                
+                <h3>Use Cases:</h3>
+                <ul>
+                    <li>Database contexts</li>
+                    <li>Unit of work patterns</li>
+                    <li>Request-specific state</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><span class="emoji">🌍</span> Singleton</h2>
+                <span class="lifetime-type singleton">One instance forever</span>
+                
+                <h3>Characteristics:</h3>
+                <ul>
+                    <li>Created once on first request</li>
+                    <li>Shared across entire application</li>
+                    <li>Lives until app shutdown</li>
+                </ul>
+                
+                <h3>Use Cases:</h3>
+                <ul>
+                    <li>Configuration services</li>
+                    <li>Caching services</li>
+                    <li>Expensive resources</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Warning:</strong> Must be thread-safe!
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="margin: 2rem 0 1rem;">🚀 Try the API Endpoints</h2>
+        
+        <div class="grid">
+            <div class="endpoint">
+                <h4>1. Complete Comparison</h4>
+                <code>GET /api/Operations</code>
+                <p>Shows IDs from both controller and service injections. Compare to see how lifetimes differ.</p>
+                <a href="/api/Operations" class="button" target="_blank">Try It →</a>
+            </div>
+            
+            <div class="endpoint">
+                <h4>2. Simple View</h4>
+                <code>GET /api/Operations/simple</code>
+                <p>Simplified view with short IDs. Call multiple times to observe changes.</p>
+                <a href="/api/Operations/simple" class="button" target="_blank">Try It →</a>
+            </div>
+            
+            <div class="endpoint">
+                <h4>3. Multiple Injections</h4>
+                <code>GET /api/Operations/multiple</code>
+                <p>Shows multiple injections within the same request to demonstrate instance reuse.</p>
+                <a href="/api/Operations/multiple" class="button" target="_blank">Try It →</a>
+            </div>
+        </div>
+        
+        <div class="info-box" style="margin-top: 2rem;">
+            <strong>💡 Pro Tip:</strong> Open the browser developer tools (F12) and watch the console output 
+            to see when new Operation instances are created. Each creation is logged with a timestamp and instance number.
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="/swagger" class="button">📖 Open Swagger UI</a>
+        </div>
+    </div>
+</body>
+</html>
