@@ -10,8 +10,8 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Authors>mghabin</Authors>
-    <PackageProjectUrl>https://github.com/mghabin/dependency-lifetime-demo</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/mghabin/dependency-lifetime-demo.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/mghabin/DependencyLifetimeDemo</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mghabin/DependencyLifetimeDemo.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>Educational ASP.NET Core project demonstrating DI lifetimes (Singleton, Scoped, Transient) via controllers.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
