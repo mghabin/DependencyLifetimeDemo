@@ -1,0 +1,45 @@
+# .NET build results
+**/bin
+**/obj
+[Bb]uild/
+[Ll]og/
+TestResults/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio Code workspace
+*.code-workspace
+
+# Others
+*.log
+*.vs/
+*.swp
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# Local configuration files
+appsettings.Development.json
+secrets.json
